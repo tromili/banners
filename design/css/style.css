@@ -1,0 +1,31 @@
+.logo{
+	background-image: url('../img/logo.jpg');
+	background-size: 200px 155px;
+	position:absolute; 
+	width:200px; 
+	height: 155px;
+	background-repeat: no-repeat;
+	border-radius: 5px;
+}
+a{
+	color: #ceccc6;
+}
+.masthead{
+	background-color: #6b7494;
+	height: 155px;
+	border-radius: 5px;
+}
+
+body {
+	background:#2d2d2d;
+	font-family:Arial, Helvetica, Sans-serif;
+}
+
+.nav {
+	margin-top: 80px;
+	margin-right: 20px;
+}
+
+.search{
+	
+}
