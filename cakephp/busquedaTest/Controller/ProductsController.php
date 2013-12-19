@@ -128,9 +128,10 @@ class ProductsController extends AppController {
  *
  * @return void
  */
-  public function getData($q=null, $ac=null) {
+  public function getData($q=null, $ac='nac', $option='N', $order='A') {
+    // TODO ordenar de acuerdo a los parametros $option y $order
     $like = $q.'%';
-    if (!$ac) {
+    if ($ac=='nac') {
       $like = '%'.$like;
     }
     $this->set('products', $this->Product->find('all',

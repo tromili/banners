@@ -18,16 +18,17 @@
     };
     // SUBMIT FORM
     $( "#ProductSearchForm" ).submit(function( event ) {
+      var order = $( "input:radio[name=order]:checked" ).val();
+      var searchOption = $( "#searchOption" ).val();
       var name = normalize($( "#autoc" ).val());
       if ($('input[name=show]').val() == '0') {
         window.location.replace(path+"search/"+name);
-        //$( "#ProductSearchForm" ).submit();
         event.preventDefault();
       }
       $( "#results" ).hide('slow');
       $( "#results" ).empty();
       $.ajax({
-        url: path+'getData/'+name,
+        url: path+'getData/'+name+'/nac/'+searchOption+'/'+order,
         dataType: 'json',
         success: function( data ){
           var all = "<h3>All Results</h3>";
