@@ -44,6 +44,7 @@
             html: all+items.join( "" )
           }).appendTo( "#results" );
           $("#results").show('slow');
+          $("#showallbutton").hide("fast");
         }//success
       });
       event.preventDefault();
@@ -106,6 +107,7 @@
                 html: best + items.join( "" )
               }).appendTo( "#results" );
               $("#results").show('slow');
+              $("#showallbutton").show("slow");
             }//success
           });
           event.preventDefault();
@@ -120,6 +122,7 @@
           .append("<a"+href+">" + item.Product.name + "</a>")
           .appendTo(ul);
       };
+    // IF PATH IS .../products/search
     if ($( "#autoc" ).val()) {  
       if ($('input[name=show]').val() == '1') {
         $( "#showall" ).click();
