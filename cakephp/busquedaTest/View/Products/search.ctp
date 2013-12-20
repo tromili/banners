@@ -18,7 +18,7 @@
   <input type="radio" name="order" id="OrderD" value="D" />
   <label for="OrderD">Desc</label>
 </span>
- <?php
+<?php
   echo $this->Form->end('Search');
 ?>
 <input type="hidden" name="show" value="1">

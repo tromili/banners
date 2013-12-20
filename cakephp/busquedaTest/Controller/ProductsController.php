@@ -129,15 +129,22 @@ class ProductsController extends AppController {
  * @return void
  */
   public function getData($q=null, $ac='nac', $option='N', $order='A') {
-    // TODO ordenar de acuerdo a los parametros $option y $order
     $like = $q.'%';
-    if ($ac=='nac') {
+    if ($ac=='nac')
       $like = '%'.$like;
-    }
+    if ($option == 'P')
+      $option = 'Product.price';
+    else
+      $option = 'Product.name';
+    if ($order == 'D')
+      $order = 'desc';
+    else 
+      $order = 'asc';
     $this->set('products', $this->Product->find('all',
       array('conditions'=>array(
         'Product.name LIKE' => $like),
-        'fields' => array('id', 'name', 'description', 'price', 'material_id')
+        'fields' => array('id', 'name', 'description', 'price'),
+        'order' => array($option => $order)
     )));
     $this->layout = 'ajax';
   }
