@@ -1,9 +1,7 @@
 <div class="banners form">
-<?php echo $this->Form->create('Banner'); ?>
+<?php echo $this->Form->create('Banner', array('type' => 'file')); ?>
   <fieldset>
-    <legend>
-      <?php echo __('Admin Add Banner', array('type' => 'file')); ?>
-    </legend>
+    <legend><?php echo __('Admin Add Banner'); ?></legend>
   <?php
     echo $this->Form->input('name');
     echo $this->Form->input('description');
