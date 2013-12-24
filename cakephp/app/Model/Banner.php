@@ -64,5 +64,15 @@ class Banner extends AppModel {
         //'on' => 'create', // Limit validation to 'create' or 'update' operations
       ),
     ),
+    'photo' => array(
+      'Rule1'=> array(
+        'rule' => 'isFileUpload',
+        'message' => 'File was missing from submission'
+      ),
+      'Rule2'=> array(
+        'rule' => 'isCompletedUpload',
+        'message' => 'File was not successfully uploaded'
+      )
+    ),
   );
 }
