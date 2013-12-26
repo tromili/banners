@@ -27,10 +27,42 @@ a{
 	height: 155px;
 	background-repeat: no-repeat;
 	border-radius: 5px;
-	margin-left: 120px;
+	margin-left: 160px;
 }
 
-
+.direccion{
+  background-image: url('../img/direccion.png');
+  background-repeat: no-repeat;
+ 
+}
+.form-cont input, textarea{
+  width: 256px;
+}
+.send{
+  width: 270px;
+  height: 50px;
+}
+.telefono{
+  background-image: url('../img/telefono.png');
+  background-repeat: no-repeat;
+ 
+}
+.email{
+  background-image: url('../img/mail.png');
+  background-repeat: no-repeat;
+ 
+}
+.atencion{
+  background-image: url('../img/atencion.png');
+  background-repeat: no-repeat;
+ 
+}
+.tablacontactanos span{
+  padding-left: 70px;
+  display: block;
+  margin: 20px 0px;
+  min-height: 46px;
+}
 .main{
 	background-color: #ceccc6;
 	border-radius: 5px;
@@ -68,7 +100,7 @@ a{
 }
 .nav {
 	margin-top: 70px;
-	margin-right: 150px;
+	margin-right: 170px;
 }
 /*slider*/
 #slider1 {

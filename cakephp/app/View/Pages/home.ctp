@@ -77,9 +77,9 @@
 
       <div class="masthead">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#">Home</a></li>
+          <li class="active"><a href="#main">Home</a></li>
           <li><a href="#">¿Quienes Somos?</a></li>
-          <li><a href="#">Contáctanos</a></li>
+          <li><a href="#tablacontactanos">Contáctanos</a></li>
         </ul>
         <div class="logo"></div>
       </div>
@@ -147,27 +147,53 @@
         <tr>
           <td>
             <h2>Contáctanos</h2>
-            <span>
-              Av. Quiñones 122<br> Alto Selva Algue
-            </span> 
-            <br>
-            
-            <span>
-              (054) 201847  (511)991566865<br> (054) 12323
-            </span> 
-            
-             <br>
-            <span>
-              grupoef@gmail.com
-            </span> 
-           
-             <br>
-            <span>
-              Lunes a Sábado <br> 9:00am. a 8:30pm.
-            </span> 
           </td>
           <td>
             <h2>Escríbenos</h2>
+          </td> 
+        </tr>
+        <tr>
+          <td>
+            
+            <table >
+              <tr>
+                <td><span class="direccion">
+                  Av. Quiñones 122 <br>Alto Selva Algue
+                </span></td> 
+              </tr>
+              <tr>
+                <td><span class="telefono">
+                  (054) 200000  (511)991566865<br> (054) 12323
+                </span></td> 
+              </tr>
+              <tr>
+                <td><span class="email">
+                  grupoef@gmail.com
+                </span></td> 
+              </tr>
+              <tr>
+                <td><span class="atencion">
+                  Lunes a Sábado <br> 9:00am. a 8:30pm.
+                </span></td> 
+              </tr>
+            </table>
+          </td>
+          <td>
+                <form class="form-cont" onsubmit="return valida(this)">
+                  <fieldset>
+                  
+                  <input id="nombre" name="nombre" type="text" placeholder="Nombre...">
+        
+                  <input id="correo" name="correo" type="text" placeholder="Correo electrónico...">
+                  
+                  <input id="fono" name="fono" type="text" placeholder="Teléfono...">
+                  
+                  <textarea id="asunto" name="asunto" rows="3" placeholder="Asunto"></textarea>
+                  <label class="checkbox">
+                  </label>
+                  <button id="enviar" name="enviar" type="submit" class="send">Enviar</button>
+                  </fieldset>
+                </form>
           </td>
         </tr>
       </table>
@@ -195,6 +221,7 @@
     <script src="js/bootstrap-collapse.js"></script>
     <script src="js/bootstrap-carousel.js"></script>
     <script src="js/bootstrap-typeahead.js"></script>
+    <script src="js/valida.js"></script>
 
   </body>
 </html>
