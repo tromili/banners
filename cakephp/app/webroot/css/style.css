@@ -86,6 +86,7 @@ a{
 	width: 1000px;
 	border-radius: 5px;
 	margin-left: -150px;
+  font-size: 18px;
 }
 .tablacontactanos{
 	color: #ceccc6;
@@ -166,3 +167,28 @@ a{
 		    width: 700px;
 		}
       ul { list-style-type: none;}
+
+/*///////////////////////////////7*/
+
+/* Para evitar margenes y espacios */
+
+
+ 
+.menu-fijo {
+  padding-top: 10px;
+  padding-left: 140px;
+  background-color: #6b7494;
+  position: fixed;
+  margin-left: 0px;
+  border-radius: 5px;
+  width: 860px;
+  margin-top: -20px;
+  height: 50px;
+  font-weight:bold;
+  font-size: 20px;
+  z-index: 2;
+}
+
+#inicio{
+  height: 50px;
+}

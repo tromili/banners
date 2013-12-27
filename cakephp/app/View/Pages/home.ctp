@@ -56,6 +56,8 @@
     </style>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/s3Slider.js"></script>
+    <script type="text/javascript" src="js/scroll.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#slider1').s3Slider({
@@ -78,14 +80,16 @@
 
   <body>
 
-    <div class="container-narrow">
+    <div id="home" class="container-narrow">
 
       <div class="masthead">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#main">Home</a></li>
-          <li><a href="#">¿Quienes Somos?</a></li>
-          <li><a href="#tablacontactanos">Contáctanos</a></li>
-        </ul>
+        <div id="menu-contenedor">
+          <ul id="menu" class="nav nav-pills pull-right">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#inicio">¿Quienes Somos?</a></li>
+            <li><a href="#contact">Contáctanos</a></li>
+          </ul>
+        </div>
         <div class="logo"></div>
       </div>
       <div id="slider1">
@@ -106,12 +110,11 @@
             </ul>
         </div>
       <hr>
-
-      <div class="main">
+      <div id="inicio"></div>
+      <div class="main" >
         <h2>Bienvenidos</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et erat neque. Vivamus fringilla nec nisi eget dignissim. Phasellus vel eros ac urna tincidunt bibendum. Curabitur in nulla elit. Sed sollicitudin porttitor erat, et malesuada nunc. Nunc malesuada metus felis, id fringilla metus ullamcorper id. Sed pharetra quis dui ut consequat. Integer a dictum felis. Suspendisse viverra nisi nec posuere tincidunt. Quisque pharetra convallis viverra. Nulla commodo augue quis purus euismod, at fermentum ante ornare. Nam sed est non quam dapibus hendrerit. Donec id magna vitae tortor elementum vehicula sit amet non odio. Proin nulla dui, imperdiet at massa id, sollicitudin feugiat leo. Aliquam non metus euismod, venenatis ipsum quis, facilisis velit. </p>
       </div>
-      <hr>
       <div class="search">
         <h2>Nuestros Banners</h2>
         <form id="SearchForm" method="post" action="/banners/cakephp/banners/search/">
@@ -177,8 +180,8 @@
         </div>
       </div>
       <hr>
-      <table class="tablacontactanos">
-        <tr>
+      <table  class="tablacontactanos">
+        <tr id="contact">
           <td>
             <h2>Contáctanos</h2>
           </td>
