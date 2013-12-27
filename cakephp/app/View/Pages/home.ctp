@@ -114,10 +114,14 @@
       <hr>
       <div class="search">
         <h2>Nuestros Banners</h2>
+        <form id="SearchForm" method="post" action="/banners/cakephp/banners/search/">
         <div class="input-append">
-          <input class="span6" id="autoc" type="text" placeholder="¿Qué estas buscando?">
-          <button class="btn btn-default" type="button">Buscar</button>
+          <input class="span6 ui-autocomplete-input" id="autoc" 
+            type="text" placeholder="¿Qué estas buscando?">
+          <button class="btn btn-default" id="showall" type="button">Buscar</button>
         </div>
+        <input type="hidden" name="show" value="0"> 
+        </form>
         <div class="row-fluid marketing">
           <div class="span6">
             <h4>Banner Destacado 1</h4>
@@ -132,7 +136,9 @@
             <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
           </div>
         </div>
-        <button type="button" class="btn btn-default btn-lg btn-block">Vea Todos Nuestros Banners</button>
+        <a href="banners/search/">
+          <button type="button" class="btn btn-default btn-lg btn-block">Vea Todos Nuestros Banners</button>
+        </a>
         <br>
       </div>
       <br>
