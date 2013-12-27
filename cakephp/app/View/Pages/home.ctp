@@ -216,7 +216,7 @@
             </table>
           </td>
           <td>
-                <form class="form-cont" onsubmit="return valida(this)">
+                <form class="form-cont" onsubmit="return valida(this)" action="enviar.php" method="POST">
                   <fieldset>
                   
                   <input id="nombre" name="nombre" type="text" placeholder="Nombre...">
