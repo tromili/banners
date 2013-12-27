@@ -3,7 +3,7 @@
 	$correo = $_POST['correo'];
 	$fono = $_POST['fono'];
 	$asunto = $_POST['asunto'];
-	$mail_destinatario = 'grandivini@labottegadelvino.pe';
+	$mail_destinatario = 'anthonny.gonzales@gmail.com';
 	//echo $nombre;
 	if(!is_null($nombre) && !is_null($correo) && !is_null($fono) && !is_null($asunto)){
 		$cuerpo = "Formulario enviado\n";
