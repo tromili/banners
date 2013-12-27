@@ -49,9 +49,12 @@
       .marketing p + h4 {
         margin-top: 28px;
       }
+      .search {
+        text-align: center;
+      }
       
     </style>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/s3Slider.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
@@ -62,6 +65,8 @@
     </script>
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.min.css" rel="stylesheet">
+
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -108,38 +113,61 @@
       </div>
       <hr>
       <div class="search">
-        <h2>Busqueda</h2>
-      </div>
-      <hr>
-         <h2>Ultimas notiicas</h2>
-      <div class="row-fluid marketing">
-
-        <div class="span6">
-          <h4>Subheading</h4>
-          <h5>12/03/13</h5>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-          <h4>Subheading</h4>
-          <h5>12/03/14</h5>
-          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-          <h4>Subheading</h4>
-          <h5>12/03/15</h5>
-          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+        <h2>Nuestros Banners</h2>
+        <div class="input-append">
+          <input class="span6" id="autoc" type="text" placeholder="¿Qué estas buscando?">
+          <button class="btn btn-default" type="button">Buscar</button>
         </div>
+        <div class="row-fluid marketing">
+          <div class="span6">
+            <h4>Banner Destacado 1</h4>
+            <img src="http://premium.wpmudev.org/blog/wp-content/uploads/2012/09/wordpress-banner-billboard-big.jpg"
+              class="img-rounded">
+            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+          </div>
+          <div class="span6">
+            <h4>Banner Destacado 2</h4>
+            <img src="http://premium.wpmudev.org/blog/wp-content/uploads/2012/09/wordpress-banner-billboard-big.jpg"
+              class="img-rounded">
+            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+          </div>
+        </div>
+        <button type="button" class="btn btn-default btn-lg btn-block">Vea Todos Nuestros Banners</button>
+        <br>
+      </div>
+      <br>
+      <hr>
+      <div class="noticias">
+        <h2>Ultimas noticias</h2>
+        <div class="row-fluid marketing">
 
-        <div class="span6">
-          <h4>Subheading</h4>
-          <h5>12/03/13</h5>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+          <div class="span6">
+            <h4>Subheading</h4>
+            <h5>12/03/13</h5>
+            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
 
-          <h4>Subheading</h4>
-          <h5>12/03/13</h5>
-          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+            <h4>Subheading</h4>
+            <h5>12/03/14</h5>
+            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
 
-          <h4>Subheading</h4>
-          <h5>12/03/13</h5>
-          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+            <h4>Subheading</h4>
+            <h5>12/03/15</h5>
+            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+          </div>
+
+          <div class="span6">
+            <h4>Subheading</h4>
+            <h5>12/03/13</h5>
+            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+
+            <h4>Subheading</h4>
+            <h5>12/03/13</h5>
+            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+            <h4>Subheading</h4>
+            <h5>12/03/13</h5>
+            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+          </div>
         </div>
       </div>
       <hr>
@@ -208,7 +236,7 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery.js"></script>
+    <!-- NO LOS ESTA CARGANDO
     <script src="js/bootstrap-transition.js"></script>
     <script src="js/bootstrap-alert.js"></script>
     <script src="js/bootstrap-modal.js"></script>
@@ -221,7 +249,10 @@
     <script src="js/bootstrap-collapse.js"></script>
     <script src="js/bootstrap-carousel.js"></script>
     <script src="js/bootstrap-typeahead.js"></script>
+    -->
     <script src="js/valida.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script type="text/javascript" src="js/autocomplete.js"></script>
 
   </body>
 </html>

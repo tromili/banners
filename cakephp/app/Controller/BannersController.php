@@ -14,14 +14,14 @@ class BannersController extends AppController {
  *
  * @var array
  */
-	public $helpers = array('Js');
+  public $helpers = array('Js');
 
 /**
  * Components
  *
  * @var array
  */
-	public $components = array('Paginator', 'RequestHandler');
+  public $components = array('Paginator', 'RequestHandler');
 
 
 /**
@@ -29,10 +29,10 @@ class BannersController extends AppController {
  *
  * @return void
  */
-	public function admin_index() {
-		$this->Banner->recursive = 0;
-		$this->set('banners', $this->Paginator->paginate());
-	}
+  public function admin_index() {
+    $this->Banner->recursive = 0;
+    $this->set('banners', $this->Paginator->paginate());
+  }
 
 /**
  * admin_view method
@@ -41,30 +41,30 @@ class BannersController extends AppController {
  * @param string $id
  * @return void
  */
-	public function admin_view($id = null) {
-		if (!$this->Banner->exists($id)) {
-			throw new NotFoundException(__('Invalid banner'));
-		}
-		$options = array('conditions' => array('Banner.' . $this->Banner->primaryKey => $id));
-		$this->set('banner', $this->Banner->find('first', $options));
-	}
+  public function admin_view($id = null) {
+    if (!$this->Banner->exists($id)) {
+      throw new NotFoundException(__('Invalid banner'));
+    }
+    $options = array('conditions' => array('Banner.' . $this->Banner->primaryKey => $id));
+    $this->set('banner', $this->Banner->find('first', $options));
+  }
 
 /**
  * admin_add method
  *
  * @return void
  */
-	public function admin_add() {
-		if ($this->request->is('post')) {
-			$this->Banner->create();
-			if ($this->Banner->save($this->request->data)) {
-				$this->Session->setFlash(__('The banner has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The banner could not be saved. Please, try again.'));
-			}
-		}
-	}
+  public function admin_add() {
+    if ($this->request->is('post')) {
+      $this->Banner->create();
+      if ($this->Banner->save($this->request->data)) {
+        $this->Session->setFlash(__('The banner has been saved.'));
+        return $this->redirect(array('action' => 'index'));
+      } else {
+        $this->Session->setFlash(__('The banner could not be saved. Please, try again.'));
+      }
+    }
+  }
 
 /**
  * admin_edit method
@@ -73,22 +73,22 @@ class BannersController extends AppController {
  * @param string $id
  * @return void
  */
-	public function admin_edit($id = null) {
-		if (!$this->Banner->exists($id)) {
-			throw new NotFoundException(__('Invalid banner'));
-		}
-		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Banner->save($this->request->data)) {
-				$this->Session->setFlash(__('The banner has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The banner could not be saved. Please, try again.'));
-			}
-		} else {
-			$options = array('conditions' => array('Banner.' . $this->Banner->primaryKey => $id));
-			$this->request->data = $this->Banner->find('first', $options);
-		}
-	}
+  public function admin_edit($id = null) {
+    if (!$this->Banner->exists($id)) {
+      throw new NotFoundException(__('Invalid banner'));
+    }
+    if ($this->request->is(array('post', 'put'))) {
+      if ($this->Banner->save($this->request->data)) {
+        $this->Session->setFlash(__('The banner has been saved.'));
+        return $this->redirect(array('action' => 'index'));
+      } else {
+        $this->Session->setFlash(__('The banner could not be saved. Please, try again.'));
+      }
+    } else {
+      $options = array('conditions' => array('Banner.' . $this->Banner->primaryKey => $id));
+      $this->request->data = $this->Banner->find('first', $options);
+    }
+  }
 
 /**
  * admin_delete method
@@ -97,16 +97,69 @@ class BannersController extends AppController {
  * @param string $id
  * @return void
  */
-	public function admin_delete($id = null) {
-		$this->Banner->id = $id;
-		if (!$this->Banner->exists()) {
-			throw new NotFoundException(__('Invalid banner'));
-		}
-		$this->request->onlyAllow('post', 'delete');
-		if ($this->Banner->delete()) {
-			$this->Session->setFlash(__('The banner has been deleted.'));
-		} else {
-			$this->Session->setFlash(__('The banner could not be deleted. Please, try again.'));
-		}
-		return $this->redirect(array('action' => 'index'));
-	}}
+  public function admin_delete($id = null) {
+    $this->Banner->id = $id;
+    if (!$this->Banner->exists()) {
+      throw new NotFoundException(__('Invalid banner'));
+    }
+    $this->request->onlyAllow('post', 'delete');
+    if ($this->Banner->delete()) {
+      $this->Session->setFlash(__('The banner has been deleted.'));
+    } else {
+      $this->Session->setFlash(__('The banner could not be deleted. Please, try again.'));
+    }
+    return $this->redirect(array('action' => 'index'));
+  }
+
+
+/**
+ * autoComplete method
+ *
+ * @return void
+ */
+  public function autoComplete($q=null) {
+    $this->set('banners', $this->Banner->find('all',
+      array('conditions'=>array(
+        'Banner.name LIKE' => $this->request->query['term'].'%'),
+        'limit' => 6,
+        'fields' => array('id', 'name'),
+        'order' => array('Banner.name' => 'asc')
+    )));
+    $this->layout = 'ajax';
+  }
+
+/**
+ * getData method
+ *
+ * @return void
+ */
+  public function getData($q=null, $ac='nac', $option='N', $order='A') {
+    $like = $q.'%';
+    if ($ac=='nac')
+      $like = '%'.$like;
+    if ($option == 'M')
+      $option = 'Banner.measure';
+    else
+      $option = 'Banner.name';
+    if ($order == 'D')
+      $order = 'desc';
+    else 
+      $order = 'asc';
+    $this->set('banners', $this->Banner->find('all',
+      array('conditions'=>array(
+        'Banner.name LIKE' => $like),
+        'fields' => array('id', 'name', 'description', 'measure'),
+        'order' => array($option => $order)
+    )));
+    $this->layout = 'ajax';
+  }
+
+/**
+ * search method
+ *
+ * @return void
+ */
+  public function search($q = null, $id = null) {
+    $this->set('banner', array('q'=>$q, 'id'=>$id));
+  }
+}
