@@ -192,3 +192,7 @@ a{
 #inicio{
   height: 50px;
 }
+
+#autoc{
+  z-index: 1;
+}

@@ -21,6 +21,9 @@
       var order = $( "#order" ).val();
       var searchOption = $( "#searchOption" ).val();
       var name = normalize($( "#autoc" ).val());
+      var size = $( "#measure").val();
+      if (! name)
+        name = 'todos';
       if ($('input[name=show]').val() == '0') {
         window.location.replace(path+"search/"+name);
         event.preventDefault();
@@ -28,15 +31,15 @@
       $( "#results" ).hide('slow');
       $( "#results" ).empty();
       $.ajax({
-        url: path+'getData/'+name+'/nac/'+searchOption+'/'+order,
+        url: path+'getData/'+name+'/nac/'+searchOption+'/'+order+'/'+size,
         dataType: 'json',
         success: function( data ){
-          var all = "<h3>All Results</h3>";
+          var all = "<h3>Todos los resultados</h3>";
           var items = [];
           for (var i = 0; i < data.length; i++) {
-              items.push("<ul><li>Name: "+data[i]['Banner']['name']+
-                "</li><li>Description: "+data[i]['Banner']['description']+
-                "</li><li>Price: "+data[i]['Banner']['price']+
+              items.push("<ul><li>Nombre: "+data[i]['Banner']['name']+
+                "</li><li>Descripción: "+data[i]['Banner']['description']+
+                "</li><li>Medida: "+data[i]['Banner']['measure']+
                 "</li></ul><br>"
               );
           };
@@ -52,6 +55,10 @@
     });
     // SHOW ALL RESULTS BUTTON
     $( "#showall" ).click(function() {
+      $( "#SearchForm" ).submit();
+    });
+    // BUSCAR BUTTON
+    $( "#showall2" ).click(function() {
       $( "#SearchForm" ).submit();
     });
     // AUTOCOMPLETE
@@ -71,11 +78,9 @@
       },
       minLength: 3,
       focus: function( event, ui ) {
-        //$('#autoc').val(ui.item.Product.name);
         event.preventDefault();
       },
       select: function( event, ui ) {
-        //console.log(ui.item.Product.name);
         if ($('input[name=show]').val() == '1') {
           $( "#results" ).hide('slow');
           $( "#results" ).empty();
@@ -90,16 +95,16 @@
               var items = [];
               for (var i = 0; i < data.length; i++) {
                 if (data[i]['Banner']['id'] != id) { 
-                  items.push("<ul><li>Name: "+data[i]['Banner']['name']+
-                    "</li><li>Description: "+data[i]['Banner']['description']+
-                    "</li><li>Price: "+data[i]['Banner']['price']+
+                  items.push("<ul><li>Nombre: "+data[i]['Banner']['name']+
+                    "</li><li>Descripción: "+data[i]['Banner']['description']+
+                    "</li><li>Medida: "+data[i]['Banner']['measure']+
                     "</li></ul><br>"
                   );
                 } 
                 else {
-                  best += "<ul><li>Name: "+data[i]['Banner']['name']+
-                    "</li><li>Description: "+data[i]['Banner']['description']+
-                    "</li><li>Price: "+data[i]['Banner']['price']+
+                  best += "<ul><li>Nombre: "+data[i]['Banner']['name']+
+                    "</li><li>Descripción: "+data[i]['Banner']['description']+
+                    "</li><li>Medida: "+data[i]['Banner']['measure']+ 
                     "</li></ul><br>";
                 };
               };
@@ -123,7 +128,7 @@
           .append("<a"+href+">" + item.Banner.name + "</a>")
           .appendTo(ul);
       };
-    // IF PATH IS .../products/search
+    // IF PATH IS .../banners/search
     if ($( "#autoc" ).val()) {  
       if ($('input[name=show]').val() == '1') {
         $( "#showall" ).click();

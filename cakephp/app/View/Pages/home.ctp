@@ -139,7 +139,7 @@
             <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
           </div>
         </div>
-        <a href="banners/search/">
+        <a href="banners/search/Todos">
           <button type="button" class="btn btn-default btn-lg btn-block">Vea Todos Nuestros Banners</button>
         </a>
         <br>

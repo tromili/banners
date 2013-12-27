@@ -133,9 +133,10 @@ class BannersController extends AppController {
  *
  * @return void
  */
-  public function getData($q=null, $ac='nac', $option='N', $order='A') {
+  public function getData($q=null, $ac='nac', $option='N', $order='A', $size='') {
+    $q = strtolower($q);
     $like = $q.'%';
-    if ($ac=='nac')
+    if ($ac == 'nac')
       $like = '%'.$like;
     if ($option == 'M')
       $option = 'Banner.measure';
@@ -145,12 +146,24 @@ class BannersController extends AppController {
       $order = 'desc';
     else 
       $order = 'asc';
-    $this->set('banners', $this->Banner->find('all',
-      array('conditions'=>array(
-        'Banner.name LIKE' => $like),
-        'fields' => array('id', 'name', 'description', 'measure'),
-        'order' => array($option => $order)
-    )));
+    if (!preg_match("/[A-Z]/", $size))
+      $size = '%%';
+    if (($q == 'todos') || ($q == ''))
+      $this->set('banners', $this->Banner->find('all',
+        array(
+          'conditions' => array(
+            'Banner.measure LIKE' => $size),
+          'fields' => array('id', 'name', 'description', 'measure'),
+          'order' => array($option => $order)
+      )));
+    else
+      $this->set('banners', $this->Banner->find('all',
+        array('conditions'=>array(
+            'Banner.name LIKE' => $like,
+            'Banner.measure LIKE' => $size),
+          'fields' => array('id', 'name', 'description', 'measure'),
+          'order' => array($option => $order)
+      )));
     $this->layout = 'ajax';
   }
 
