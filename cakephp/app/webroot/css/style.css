@@ -157,15 +157,15 @@ a{
         height: 290px;
       }
       .top {
-			top: 0;
-			left: 0;
-			width: 700px;
-		}
-		.bottom {
-			bottom: 0;
-		    left: 0;
-		    width: 700px;
-		}
+      top: 0;
+      left: 0;
+      width: 700px;
+    }
+    .bottom {
+      bottom: 0;
+        left: 0;
+        width: 700px;
+    }
       ul { list-style-type: none;}
 
 /*///////////////////////////////7*/
@@ -176,19 +176,27 @@ a{
  
 .menu-fijo {
   padding-top: 10px;
-  padding-left: 140px;
+  padding-left: 300px;
   background-color: #6b7494;
   position: fixed;
   margin-left: 0px;
   border-radius: 5px;
-  width: 860px;
+  width: 700px;
   margin-top: -20px;
   height: 50px;
-  font-weight:bold;
+  
   font-size: 20px;
   z-index: 2;
+  background-image: url('../img/Logo_Rogger_menu.jpg');
+  background-size: 150px 60px;
+  background-repeat:no-repeat; 
+  background-position: 17%; 
+  font: oblique 110% cursive; 
 }
 
+.masthead li{
+  padding-left: 35px;
+}
 #inicio{
   height: 50px;
 }

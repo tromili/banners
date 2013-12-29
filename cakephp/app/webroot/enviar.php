@@ -10,7 +10,7 @@
 		$cuerpo.= "Nombre: ".$nombre."\n";
 		$cuerpo.= "Email: ".$correo."\n";
 		$cuerpo.= "Asunto: ".$asunto."\n"; 		
-		mail($mail_destinatario,"Formulario recibido",$cuerpo);
+		@mail($mail_destinatario,"Formulario recibido",$cuerpo);
 		echo 'Su mensaje a sido enviado correctamente. Gracias por contactar con nosostros';
 		header('refresh:4; url=http://vinos.local/'); 
 	}

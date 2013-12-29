@@ -61,7 +61,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#slider1').s3Slider({
-                timeOut: 4000 
+                timeOut: 3000 
             });
         });
     </script>
@@ -86,7 +86,7 @@
         <div id="menu-contenedor">
           <ul id="menu" class="nav nav-pills pull-right">
             <li><a href="#home">Home</a></li>
-            <li><a href="#inicio">¿Quienes Somos?</a></li>
+            <li><a href="#inicio">Conócenos</a></li>
             <li><a href="#contact">Contáctanos</a></li>
           </ul>
         </div>
