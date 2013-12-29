@@ -15,7 +15,7 @@
     $.fn.s3Slider = function(vars) {       
         
         var element     = this;
-        var timeOut     = (vars.timeOut != undefined) ? vars.timeOut : 4000;
+        var timeOut     = (vars.timeOut != undefined) ? vars.timeOut : 5000;
         var current     = null;
         var timeOutFn   = null;
         var faderStat   = true;
@@ -53,9 +53,9 @@
             var newMargin   = $(element).width() * currNo;
             if(faderStat == true) {
                 if(!mOver) {
-                    $(items[currNo]).fadeIn((timeOut/6), function() {
+                    $(items[currNo]).fadeIn((timeOut/8), function() {
                         if($(itemsSpan[currNo]).css('bottom') == 0) {
-                            $(itemsSpan[currNo]).slideUp((timeOut/6), function() {
+                            $(itemsSpan[currNo]).slideUp((timeOut/8), function() {
                                 faderStat = false;
                                 current = items[currNo];
                                 if(!mOver) {
@@ -63,7 +63,7 @@
                                 }
                             });
                         } else {
-                            $(itemsSpan[currNo]).slideDown((timeOut/6), function() {
+                            $(itemsSpan[currNo]).slideDown((timeOut/8), function() {
                                 faderStat = false;
                                 current = items[currNo];
                                 if(!mOver) {
@@ -76,8 +76,8 @@
             } else {
                 if(!mOver) {
                     if($(itemsSpan[currNo]).css('bottom') == 0) {
-                        $(itemsSpan[currNo]).slideDown((timeOut/6), function() {
-                            $(items[currNo]).fadeOut((timeOut/6), function() {
+                        $(itemsSpan[currNo]).slideDown((timeOut/8), function() {
+                            $(items[currNo]).fadeOut((timeOut/8), function() {
                                 faderStat = true;
                                 current = items[(currNo+1)];
                                 if(!mOver) {
@@ -86,8 +86,8 @@
                             });
                         });
                     } else {
-                        $(itemsSpan[currNo]).slideUp((timeOut/6), function() {
-                        $(items[currNo]).fadeOut((timeOut/6), function() {
+                        $(itemsSpan[currNo]).slideUp((timeOut/8), function() {
+                        $(items[currNo]).fadeOut((timeOut/8), function() {
                                 faderStat = true;
                                 current = items[(currNo+1)];
                                 if(!mOver) {
