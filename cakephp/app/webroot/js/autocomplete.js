@@ -1,6 +1,8 @@
 (function($) {
   $(document).ready(function() {
-    var path = "/banners/cakephp/banners/";
+    var main = "/banners/cakephp/";
+    var path = main + "banners/";
+    var photo_dir = main + "/files/banner/photo/";
     var cache = {};
     var accentMap = {
       "á": "a",
@@ -15,6 +17,28 @@
         result += accentMap[ str.charAt(i) ] || str.charAt(i);
       }
       return result;
+    };
+    var html_banner = function (data, id) {
+      if (id)
+        var h = "<h3>Mejores Resultados</h3>";
+      else
+        var h = "<h3>Todos los Resultados</h3>";
+      var items = [];
+      for (var i = 0; i < data.length; i++) {
+        var tmp = "<ul class='banner'><li>Nombre: "+data[i]['Banner']['name']+
+          "</li><li>Descripción: "+data[i]['Banner']['description']+
+          "</li><li>Medida: "+data[i]['Banner']['measure']+ 
+          "</li><li><img src='"+
+          photo_dir+data[i]['Banner']['photo_dir']+"/"+
+          data[i]['Banner']['photo']+"' alt="+data[i]['Banner']['photo']+
+          " height='400' width='400'>"+
+          "</li></ul><br>";
+        if (id || (data[i]['Banner']['id'] != id))
+          items.push(tmp);
+        else
+          h += tmp;
+      }
+      return h + items.join( "" )
     };
     // SUBMIT FORM
     $( "#SearchForm" ).submit(function( event ) {
@@ -34,18 +58,9 @@
         url: path+'getData/'+name+'/nac/'+searchOption+'/'+order+'/'+size,
         dataType: 'json',
         success: function( data ){
-          var all = "<h3>Todos los resultados</h3>";
-          var items = [];
-          for (var i = 0; i < data.length; i++) {
-              items.push("<ul><li>Nombre: "+data[i]['Banner']['name']+
-                "</li><li>Descripción: "+data[i]['Banner']['description']+
-                "</li><li>Medida: "+data[i]['Banner']['measure']+
-                "</li></ul><br>"
-              );
-          };
           $( "<ul/>", {
             "class": "result-list",
-            html: all+items.join( "" )
+            html: html_banner(data, false)
           }).appendTo( "#results" );
           $("#results").show('slow');
           $("#showallbutton").hide("fast");
@@ -91,26 +106,9 @@
             url: path+'getData/'+name+'/ac',
             dataType: 'json',
             success: function( data ){
-              var best = "<h3>Best Results</h3>";
-              var items = [];
-              for (var i = 0; i < data.length; i++) {
-                if (data[i]['Banner']['id'] != id) { 
-                  items.push("<ul><li>Nombre: "+data[i]['Banner']['name']+
-                    "</li><li>Descripción: "+data[i]['Banner']['description']+
-                    "</li><li>Medida: "+data[i]['Banner']['measure']+
-                    "</li></ul><br>"
-                  );
-                } 
-                else {
-                  best += "<ul><li>Nombre: "+data[i]['Banner']['name']+
-                    "</li><li>Descripción: "+data[i]['Banner']['description']+
-                    "</li><li>Medida: "+data[i]['Banner']['measure']+ 
-                    "</li></ul><br>";
-                };
-              };
               $( "<ul/>", {
                 "class": "result-list",
-                html: best + items.join( "" )
+                html: html_banner(data, id)
               }).appendTo( "#results" );
               $("#results").show('slow');
               $("#showallbutton").show("slow");
