@@ -25,14 +25,21 @@
         var h = "<h3>Todos los Resultados</h3>";
       var items = [];
       for (var i = 0; i < data.length; i++) {
-        var tmp = "<ul class='banner'><li>Nombre: "+data[i]['Banner']['name']+
-          "</li><li>Descripción: "+data[i]['Banner']['description']+
-          "</li><li>Medida: "+data[i]['Banner']['measure']+ 
-          "</li><li><img src='"+
+        var tmp = "<div class='row-fluid'>";
+        var span1 = "<div class='span6'>"+
+          "<h4>"+data[i]['Banner']['name']+"</h4>"+
+          "<p>"+data[i]['Banner']['description']+"</p>"+
+          "<h5>Tamaño "+data[i]['Banner']['measure']+"</h5></div>";
+        var span2 = "<div class='span6'><img src='"+
           photo_dir+data[i]['Banner']['photo_dir']+"/"+
-          data[i]['Banner']['photo']+"' alt="+data[i]['Banner']['photo']+
-          " height='400' width='400'>"+
-          "</li></ul><br>";
+          data[i]['Banner']['photo']+"' alt="+data[i]['Banner']['photo']+"></div>";
+        var end_tmp = "</div></div><br><hr class='inter'><br>";
+        if (i == data.length-1)
+          end_tmp = "</div></div><br>";
+        if (i%2)
+          tmp += span2 + span1 + end_tmp;
+        else
+          tmp += span1 + span2 + end_tmp;
         if (id || (data[i]['Banner']['id'] != id))
           items.push(tmp);
         else
@@ -58,8 +65,8 @@
         url: path+'getData/'+name+'/nac/'+searchOption+'/'+order+'/'+size,
         dataType: 'json',
         success: function( data ){
-          $( "<ul/>", {
-            "class": "result-list",
+          $( "<div/>", {
+            "class": "span12",
             html: html_banner(data, false)
           }).appendTo( "#results" );
           $("#results").show('slow');
@@ -106,8 +113,8 @@
             url: path+'getData/'+name+'/ac',
             dataType: 'json',
             success: function( data ){
-              $( "<ul/>", {
-                "class": "result-list",
+              $( "<div/>", {
+                "class": "span12",
                 html: html_banner(data, id)
               }).appendTo( "#results" );
               $("#results").show('slow');

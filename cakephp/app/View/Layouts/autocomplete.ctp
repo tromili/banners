@@ -45,8 +45,8 @@
   <div class="container-narrow">
     <div class="masthead">
       <ul class="nav nav-pills pull-right">
-        <li class="active"><a href="/banners/cakephp/">Home</a></li>
-        <li><a href="/banners/cakephp/#inicio">¿Quienes Somos?</a></li>
+        <li><a href="/banners/cakephp/">Home</a></li>
+        <li><a href="/banners/cakephp/#inicio">Conócenos</a></li>
         <li><a href="/banners/cakephp/#contact">Contáctanos</a></li>
       </ul>
       <div class="logo"></div>
