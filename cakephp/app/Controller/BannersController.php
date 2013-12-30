@@ -153,15 +153,16 @@ class BannersController extends AppController {
         array(
           'conditions' => array(
             'Banner.measure LIKE' => $size),
-          'fields' => array('id', 'name', 'description', 'measure'),
+          'fields' => array('id', 'name', 'description', 'measure', 'photo', 'photo_dir'),
           'order' => array($option => $order)
       )));
     else
       $this->set('banners', $this->Banner->find('all',
-        array('conditions'=>array(
+        array(
+          'conditions'=>array(
             'Banner.name LIKE' => $like,
             'Banner.measure LIKE' => $size),
-          'fields' => array('id', 'name', 'description', 'measure'),
+          'fields' => array('id', 'name', 'description', 'measure', 'photo', 'photo_dir'),
           'order' => array($option => $order)
       )));
     $this->layout = 'ajax';
