@@ -29,6 +29,14 @@ App::uses('AppController', 'Controller');
  */
 class PagesController extends AppController {
 
+
+/**
+ * Controller name
+ *
+ * @var string
+ */
+	public $name = 'Pages';
+
 /**
  * This controller does not use a model
  *

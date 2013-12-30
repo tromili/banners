@@ -30,4 +30,21 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+
+	public $components = array(
+        'Session',
+        'Auth' => array(
+            'loginRedirect' => array('controller' => 'posts', 'action' => 'index'),
+            'logoutRedirect' => array('controller' => 'pages', 'action' => 'display', 'home')
+        )
+    );
+
+	
+    public function beforeFilter() {
+       
+		$this->Auth->allow('home', 'view');
+		$this->Auth->allow('banners', 'view');
+        //$this->Auth->allow('search_index', 'view'); //quita el login a la vista indicada
+        //$this->Auth->allow('busqueda', 'view');
+    }
 }
