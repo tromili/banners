@@ -56,5 +56,7 @@
   <div id="showallbutton" style="display:none">
     <button type="button" id="showall" class="btn btn-large btn-block">Mostrar todos los resultados</button>
   </div>
-  <div class="pagination"></div>
+  <div id="pagination">
+    <button type="button" id="more" class="btn btn-large btn-block disabled">Más resultados</button>
+  </div>
 </div>

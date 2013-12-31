@@ -149,22 +149,23 @@ class BannersController extends AppController {
     if (!preg_match("/[A-Z]/", $size))
       $size = '%%';
     if (($q == 'todos') || ($q == ''))
-      $this->set('banners', $this->Banner->find('all',
-        array(
-          'conditions' => array(
-            'Banner.measure LIKE' => $size),
-          'fields' => array('id', 'name', 'description', 'measure', 'photo', 'photo_dir'),
-          'order' => array($option => $order)
-      )));
+      $this->Paginator->settings = array(
+        'conditions' => array('Banner.measure LIKE' => $size),
+        'fields' => array('id', 'name', 'description', 'measure', 'photo', 'photo_dir'),
+        'order' => array($option => $order),
+        'limit' => 20,
+      );
     else
-      $this->set('banners', $this->Banner->find('all',
-        array(
-          'conditions'=>array(
-            'Banner.name LIKE' => $like,
-            'Banner.measure LIKE' => $size),
-          'fields' => array('id', 'name', 'description', 'measure', 'photo', 'photo_dir'),
-          'order' => array($option => $order)
-      )));
+      $this->Paginator->settings = array(
+        'conditions'=>array(
+          'Banner.name LIKE' => $like,
+          'Banner.measure LIKE' => $size
+        ),
+        'fields' => array('id', 'name', 'description', 'measure', 'photo', 'photo_dir'),
+        'order' => array($option => $order),
+        'limit' => 20,
+      );
+    $this->set('banners', $this->Paginator->paginate('Banner'));
     $this->layout = 'ajax';
   }
 

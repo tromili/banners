@@ -106,7 +106,7 @@
                 $tmp = $this->Html->url(
                   '/files/banner/photo/'.$b['Banner']['photo_dir'].'/'.$b['Banner']['photo'], 
                   true);
-                echo '<a href="'.$tmp.'"><img src="'.$tmp.'" class="img-rounded">';
+                echo '<a href="'.$tmp.'"><img src="'.$tmp.'" class="img-rounded"></a>';
               ?>
               <p><?php echo h($b['Banner']['description']); ?></p>
               <h5>Tamaño: <?php echo h($b['Banner']['measure']); ?></h5>

@@ -1,6 +1,6 @@
 (function($) {
   $(document).ready(function() {
-    var main = "/banners/cakephp/";
+    var main = "/banners/cakephp/"; //change this if necessary 
     var path = main + "banners/";
     var photo_dir = main + "files/banner/photo/";
     var cache = {};
@@ -19,6 +19,8 @@
       return result;
     };
     var html_banner = function (data, id) {
+      var hasNext = data.pop();
+      console.log(hasNext);
       if (id)
         var h = "<h3>Mejores Resultados</h3>";
       else
@@ -30,9 +32,10 @@
           "<h4>"+data[i]['Banner']['name']+"</h4>"+
           "<p>"+data[i]['Banner']['description']+"</p>"+
           "<h5>Tamaño "+data[i]['Banner']['measure']+"</h5></div>";
-        var span2 = "<div class='span6'><img src='"+
-          photo_dir+data[i]['Banner']['photo_dir']+"/"+
-          data[i]['Banner']['photo']+"' alt="+data[i]['Banner']['photo']+"></div>";
+        var photo_path =  photo_dir+data[i]['Banner']['photo_dir']+"/"+
+          data[i]['Banner']['photo']+"' alt="+data[i]['Banner']['photo'];
+        var span2 = "<div class='span6'>"+"<a href='"+photo_path+"'><img src='"+photo_path+
+        "' alt="+data[i]['Banner']['photo']+"></a></div>";
         var end_tmp = "</div></div><br><hr class='inter'><br>";
         if (i == data.length-1)
           end_tmp = "</div></div><br>";
