@@ -5,7 +5,9 @@
   <div class="row-fluid">
     <div class="span12">
     <h2>Nuestros Banners</h2>
-    <form id="SearchForm" method="post" action="/banners/cakephp/banners/search/">
+    <form id="SearchForm" method="post" action="<?php
+      echo $this->Html->url(array('controller' => 'banners', 'action' => 'search'));
+    ?>">
       <div class="input-append span12">
         <input class="span10 ui-autocomplete-input" id="autoc" type="text" 
           value=<?php 

@@ -127,7 +127,7 @@
     }).data("ui-autocomplete")._renderItem = function(ul, item) {
         var href = '';
         if ( $('input[name=show]').val() == '0' ) {
-          href += " href='banners/search/" + item.Banner.name + '/' + item.Banner.id + "'";
+          href += " href='banners/search/" + item.Banner.name + "'";
         };
         return $("<li></li>").data("ui-autocomplete-item", item)
           .append("<a"+href+">" + item.Banner.name + "</a>")

@@ -173,7 +173,7 @@ class BannersController extends AppController {
  *
  * @return void
  */
-  public function search($q = null, $id = null) {
-    $this->set('banner', array('q'=>$q, 'id'=>$id));
+  public function search($q = null) {
+    $this->set('banner', array('q'=>$q));
   }
 }

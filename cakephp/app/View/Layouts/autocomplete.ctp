@@ -3,7 +3,9 @@
 <head>
   <meta charset="utf-8">
   <title>Grupo E&f</title>
-  <link rel="Shortcut Icon" type="image/x-icon" href="img/logo.jpg" />
+  <link rel="Shortcut Icon" type="image/x-icon" href="<?php
+    echo $this->Html->url('/img/logo.jpg', true);
+  ?>"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <?php
         echo $this->Html->css(array(
@@ -45,9 +47,24 @@
   <div class="container-narrow">
     <div class="masthead">
       <ul class="nav nav-pills pull-right">
-        <li><a href="/banners/cakephp/">Home</a></li>
-        <li><a href="/banners/cakephp/#inicio">Conócenos</a></li>
-        <li><a href="/banners/cakephp/#contact">Contáctanos</a></li>
+        <li>
+          <a href="<?php echo $this->Html->url(
+            array("controller" => "pages", 
+                  "#" => "home",
+            ));?>">Home</a>
+        </li>
+        <li>
+          <a href="<?php echo $this->Html->url(
+            array("controller" => "pages", 
+                  "#" => "inicio",
+            ));?>">Conócenos</a>
+        </li>
+        <li>
+          <a href="<?php echo $this->Html->url(
+            array("controller" => "pages", 
+                  "#" => "contact",
+            ));?>">Contáctanos</a>
+        </li>
       </ul>
       <div class="logo"></div>
     </div> 
