@@ -50,7 +50,10 @@ body {
 	padding-top: 20px;
 	color: #272727;
 }
-
+.facebook{
+  margin-left: 650px;
+  margin-top: 0px;
+}
 .main p{
 	text-align:justify;
 	padding-left: 30px;
@@ -67,6 +70,7 @@ body {
 	background-repeat: no-repeat;
 	border-radius: 5px;
 	margin-left: 160px;
+  margin-top: 15px;
 }
 
 .direccion{
@@ -121,7 +125,7 @@ body {
 .masthead{
 	position: center;
 	background-color: #6b7494;
-	height: 120px;
+	height: 150px;
 	width: 1000px;
 	border-radius: 5px;
 	margin-left: -150px;
@@ -140,7 +144,7 @@ body {
 
 }
 .nav {
-	margin-top: 50px;
+	margin-top: 70px;
 	margin-right: 170px;
 }
 /*slider*/
@@ -241,4 +245,16 @@ ul { list-style-type: none;}
 
 #autoc{
   z-index: 1;
+}
+
+/*////*/
+
+#column-right {
+  width: 180px;
+  height: 100px;
+  position: fixed;
+  right: 0px;
+  z-index: 100;
+  bottom: 420px;  
+
 }

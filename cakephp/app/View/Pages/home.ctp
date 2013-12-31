@@ -2,7 +2,7 @@
   $this->layout = 'none'; 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="en">
+<html xmlns:fb="http://ogp.me/ns/fb#" lang="en">
   <head>
     <meta charset="utf-8">
     <title>Grupo E&f</title>
@@ -23,6 +23,14 @@
             timeOut: 4000 
         });
       });
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
     </script>
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -50,7 +58,12 @@
             <li><a href="#contact">Contáctanos</a></li>
           </ul>
         </div>
+        
         <div class="logo"></div>
+      </div>
+      <div id="column-right">
+        <div id="fb-root"></div>
+        <fb:like href="https://www.facebook.com/gonzalesvillfuerte" width="200" layout="button_count" action="like" show_faces="true" share="true"></fb:like>
       </div>
       <div id="slider1">
             <ul id="slider1Content">
@@ -77,7 +90,7 @@
       </div>
       <div class="search">
         <h2>Nuestros Banners</h2>
-        <form id="SearchForm" method="post" action="/banners/cakephp/banners/search/">
+        <form id="SearchForm" method="post" action="banners/search/">
         <div class="input-append">
           <input class="span6 ui-autocomplete-input" id="autoc" 
             type="text" placeholder="¿Qué estas buscando?">
