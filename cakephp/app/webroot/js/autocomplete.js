@@ -2,7 +2,7 @@
   $(document).ready(function() {
     var main = "/banners/cakephp/";
     var path = main + "banners/";
-    var photo_dir = main + "/files/banner/photo/";
+    var photo_dir = main + "files/banner/photo/";
     var cache = {};
     var accentMap = {
       "á": "a",
