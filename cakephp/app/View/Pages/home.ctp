@@ -107,7 +107,7 @@
       <br>
       <hr>
       <div class="noticias">
-        <h2>Ultimas noticias</h2>
+        <h2>Publicidad</h2>
         <div class="row-fluid marketing">
 
           <div class="span6">

@@ -42,8 +42,13 @@ class AppController extends Controller {
 	
     public function beforeFilter() {
        
-		$this->Auth->allow('home', 'view');
-		$this->Auth->allow('banners', 'view');
+        //$this->Auth->allow('index', 'view');
+        //$this->Auth->allow('admin_add', 'view');
+        $this->Auth->allow('search', 'view');
+        //for particular actions
+        $this->Auth->allow(array('controller' => 'pages', 'action' => 'display', 'home'));
+        
+		//$this->Auth->allow('banners', 'view');
         //$this->Auth->allow('search_index', 'view'); //quita el login a la vista indicada
         //$this->Auth->allow('busqueda', 'view');
     }
