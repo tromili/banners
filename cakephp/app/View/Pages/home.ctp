@@ -99,22 +99,23 @@
         <input type="hidden" name="show" value="0"> 
         </form>
         <div class="row-fluid marketing">
-          <div class="span6">
-            <h4>Banner Destacado 1</h4>
-            <img src="http://premium.wpmudev.org/blog/wp-content/uploads/2012/09/wordpress-banner-billboard-big.jpg"
-              class="img-rounded">
-            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-          </div>
-          <div class="span6">
-            <h4>Banner Destacado 2</h4>
-            <img src="http://premium.wpmudev.org/blog/wp-content/uploads/2012/09/wordpress-banner-billboard-big.jpg"
-              class="img-rounded">
-            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-          </div>
+          <?php foreach ($banners as $b): ?>
+            <div class="span6">
+              <h4><?php echo h($b['Banner']['name']); ?></h4>
+              <?php
+                $tmp = $this->Html->url(
+                  '/files/banner/photo/'.$b['Banner']['photo_dir'].'/'.$b['Banner']['photo'], 
+                  true);
+                echo '<a href="'.$tmp.'"><img src="'.$tmp.'" class="img-rounded">';
+              ?>
+              <p><?php echo h($b['Banner']['description']); ?></p>
+              <h5>Tamaño: <?php echo h($b['Banner']['measure']); ?></h5>
+            </div>
+          <?php endforeach ?>
         </div>
         <a href="banners/search/Todos">
           <button type="button" class="btn btn-default btn-lg btn-block">Vea Todos Nuestros Banners</button>
-        </a>
+        </a >
         <br>
       </div>
       <br>

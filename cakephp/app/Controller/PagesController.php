@@ -18,7 +18,6 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('AppController', 'Controller');
-
 /**
  * Static content controller
  *
@@ -70,7 +69,15 @@ class PagesController extends AppController {
 		if (!empty($path[$count - 1])) {
 			$title_for_layout = Inflector::humanize($path[$count - 1]);
 		}
-		$this->set(compact('page', 'subpage', 'title_for_layout'));
+		//$this->set(compact('page', 'subpage', 'title_for_layout'));
+		$this->loadModel("Banner");
+
+		$this->set('banners', $this->Banner->find('all',
+					array(
+						'fields' => array('id', 'name', 'description', 'measure', 'photo', 'photo_dir'),
+						'order' => array('created' => 'desc'),
+						'limit' => 2
+						)));
 
 		try {
 			$this->render(implode('/', $path));
