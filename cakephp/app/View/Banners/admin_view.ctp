@@ -36,9 +36,14 @@
 			<?php echo h($banner['Banner']['photo']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Photo Dir'); ?></dt>
+		<dt><?php echo __('Photo Preview'); ?></dt>
 		<dd>
-			<?php echo h($banner['Banner']['photo_dir']); ?>
+			<?php 
+			$path = $banner['Banner']['photo_dir'].'/'.$banner['Banner']['photo']; 
+			echo '<a href="' . $this->Html->url('/files/banner/photo/'.$path, true) . '">';
+			echo '<img src="' . $this->Html->url('/files/banner/photo/'.$path, true);
+			echo '" style="max-width:455px"></a>';
+			?>
 			&nbsp;
 		</dd>
 	</dl>

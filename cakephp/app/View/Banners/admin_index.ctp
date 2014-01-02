@@ -9,7 +9,6 @@
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
 			<th><?php echo $this->Paginator->sort('measure'); ?></th>
 			<th><?php echo $this->Paginator->sort('photo'); ?></th>
-			<th><?php echo $this->Paginator->sort('photo_dir'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($banners as $banner): ?>
@@ -21,7 +20,6 @@
 		<td><?php echo h($banner['Banner']['modified']); ?>&nbsp;</td>
 		<td><?php echo h($banner['Banner']['measure']); ?>&nbsp;</td>
 		<td><?php echo h($banner['Banner']['photo']); ?>&nbsp;</td>
-		<td><?php echo h($banner['Banner']['photo_dir']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $banner['Banner']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $banner['Banner']['id'])); ?>
