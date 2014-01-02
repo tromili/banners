@@ -153,7 +153,7 @@ class BannersController extends AppController {
         'conditions' => array('Banner.measure LIKE' => $size),
         'fields' => array('id', 'name', 'description', 'measure', 'photo', 'photo_dir'),
         'order' => array($option => $order),
-        'limit' => 20,
+        'limit' => 10,
       );
     else
       $this->Paginator->settings = array(
@@ -163,7 +163,7 @@ class BannersController extends AppController {
         ),
         'fields' => array('id', 'name', 'description', 'measure', 'photo', 'photo_dir'),
         'order' => array($option => $order),
-        'limit' => 20,
+        'limit' => 10,
       );
     $this->set('banners', $this->Paginator->paginate('Banner'));
     $this->layout = 'ajax';

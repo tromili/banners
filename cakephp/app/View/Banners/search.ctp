@@ -56,7 +56,12 @@
   <div id="showallbutton" style="display:none">
     <button type="button" id="showall" class="btn btn-large btn-block">Mostrar todos los resultados</button>
   </div>
+  <div id="loading" style="display:none">
+    <img src="<?php
+    echo $this->Html->url('/img/loading.gif', true);
+  ?>" width="150" height="150">
+  </div>
   <div id="pagination">
-    <button type="button" id="more" class="btn btn-large btn-block disabled">Más resultados</button>
+    <button type="button" id="more" class="btn btn-large btn-block">Más resultados</button>
   </div>
 </div>

@@ -3,6 +3,7 @@
     var main = "/banners/cakephp/"; //change this if necessary 
     var path = main + "banners/";
     var photo_dir = main + "files/banner/photo/";
+    var page = 1;
     var cache = {};
     var accentMap = {
       "á": "a",
@@ -20,8 +21,13 @@
     };
     var html_banner = function (data, id) {
       var hasNext = data.pop();
-      console.log(hasNext);
-      if (id)
+      if (hasNext)
+        $( "#pagination" ).show("fast")
+      else
+        $( "#pagination" ).hide("fast")
+      if (id == -1)
+        var h = "<hr>";
+      else if (id)
         var h = "<h3>Mejores Resultados</h3>";
       else
         var h = "<h3>Todos los Resultados</h3>";
@@ -36,7 +42,7 @@
           data[i]['Banner']['photo']+"' alt="+data[i]['Banner']['photo'];
         var span2 = "<div class='span6'>"+"<a href='"+photo_path+"'><img src='"+photo_path+
         "' alt="+data[i]['Banner']['photo']+"></a></div>";
-        var end_tmp = "</div></div><br><hr class='inter'><br>";
+        var end_tmp = "</div></div><br><hr><br>";
         if (i == data.length-1)
           end_tmp = "</div></div><br>";
         if (i%2)
@@ -52,6 +58,8 @@
     };
     // SUBMIT FORM
     $( "#SearchForm" ).submit(function( event ) {
+      $( "#loading" ).show("fast");
+      page = 1;
       var order = $( "#order" ).val();
       var searchOption = $( "#searchOption" ).val();
       var name = normalize($( "#autoc" ).val());
@@ -74,6 +82,7 @@
           }).appendTo( "#results" );
           $("#results").show('slow');
           $("#showallbutton").hide("fast");
+          $( "#loading" ).hide("fast");
         }//success
       });
       event.preventDefault();
@@ -85,6 +94,29 @@
     // BUSCAR BUTTON
     $( "#showall2" ).click(function() {
       $( "#SearchForm" ).submit();
+    });
+    // MORE RESULTS BUTTON
+    $( "#more" ).click(function() {
+      $( "#pagination" ).hide("fast");
+      $( "#loading" ).show("fast");
+      page++;
+      var order = $( "#order" ).val();
+      var searchOption = $( "#searchOption" ).val();
+      var name = normalize($( "#autoc" ).val());
+      var size = $( "#measure").val();
+      if (! name)
+        name = 'todos';
+      $.ajax({
+        url: path+'getData/'+name+'/nac/'+searchOption+'/'+order+'/'+size+'/page:'+page,
+        dataType: 'json',
+        success: function( data ) {
+          $( "<div/>", {
+            "class": "span12",
+            html: html_banner(data, -1)
+          }).appendTo( "#results" );
+          $( "#loading" ).hide("fast");
+        }//success
+      });
     });
     // AUTOCOMPLETE
     $( "#autoc" ).autocomplete({
@@ -120,6 +152,7 @@
                 "class": "span12",
                 html: html_banner(data, id)
               }).appendTo( "#results" );
+              $("#pagination").hide("fast");
               $("#results").show('slow');
               $("#showallbutton").show("slow");
             }//success
