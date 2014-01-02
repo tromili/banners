@@ -8,6 +8,10 @@ App::uses('AppController', 'Controller');
  * @property RequestHandlerComponent $RequestHandler
  */
 class BannersController extends AppController {
+  public function beforeFilter() {
+    parent::beforeFilter();
+    $this->Auth->allow(array('search','autoComplete','getData'));
+  }
 
 /**
  * Helpers
